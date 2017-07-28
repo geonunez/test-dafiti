@@ -1,3 +1,10 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+dafiti_web:
+    resource: "@DafitiWebBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+dafiti_admin:
+    resource: "@DafitiAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
