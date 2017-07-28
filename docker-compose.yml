@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+    web:
+        build: ./docker/web
+        ports:
+            - "80:80"
+        volumes:
+            - "./docker/web/vhost.conf:/etc/apache2/sites-available/000-default.conf"
+            - "./docker/web/vhost.conf:/etc/apache2/sites-enabled/000-default.conf"
+            - ".:/var/www/test-dafiti"
+        links:
+            - "db"
+        working_dir: /var/www/test-dafiti
+        container_name: test-dafiti-web
+    db:
+        image: mysql:5.5.54
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./docker/db:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test-dafiti
+            MYSQL_USER: test-dafiti
+            MYSQL_PASSWORD: test-dafiti
+        container_name: test-dafiti-db
+
+
