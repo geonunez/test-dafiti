@@ -1,4 +1,4 @@
-FROM php:5.6.29-apache
+FROM php:7.1-apache
 
 MAINTAINER Jorge Nuñez <jorge.nunez@opinapanel.com>
 
@@ -23,7 +23,7 @@ RUN a2enmod rewrite
 
 ### PHP Extensions
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  &&  \
-    docker-php-ext-install curl gd mcrypt mysqli pdo pdo_mysql zip
+    docker-php-ext-install curl gd mcrypt mysqli pcntl pdo pdo_mysql zip
 
 ### PECL PHP Extensions
 RUN pecl install xdebug-2.5.5 && \
