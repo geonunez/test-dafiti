@@ -5,6 +5,7 @@ services:
         build: ./docker/web
         ports:
             - "80:80"
+            - "8000:8000"
         volumes:
             - "./docker/web/vhost.conf:/etc/apache2/sites-available/000-default.conf"
             - "./docker/web/vhost.conf:/etc/apache2/sites-enabled/000-default.conf"
@@ -17,8 +18,8 @@ services:
         image: mysql:5.5.54
         ports:
             - "3306:3306"
-        volumes:
-            - "./docker/db:/var/lib/mysql"
+        # volumes:
+        #     - "./docker/db:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: test-dafiti

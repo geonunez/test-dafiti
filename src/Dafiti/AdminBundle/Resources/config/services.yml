@@ -1,4 +1,12 @@
 services:
-#    dafiti_admin.example:
-#        class: Dafiti\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    dafiti_admin.admin.user:
+        class: Dafiti\AdminBundle\Admin\UserAdmin
+        arguments: [~, Dafiti\AdminBundle\Entity\User, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+
+    dafiti_admin.admin.product:
+        class: Dafiti\AdminBundle\Admin\ProductAdmin
+        arguments: [~, Dafiti\AdminBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Product }

@@ -17,3 +17,5 @@
 /web/bundles/
 !/docker/db/.gitkeep
 /docker/db/*
+!/web/uploaded/products/.gitkeep
+/web/uploaded/products/*
