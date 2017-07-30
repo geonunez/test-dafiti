@@ -3,10 +3,14 @@ services:
         class: Dafiti\AdminBundle\Admin\UserAdmin
         arguments: [~, Dafiti\AdminBundle\Entity\User, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+            - { name: sonata.admin, manager_type: orm, group: Users, label: User }
 
     dafiti_admin.admin.product:
         class: Dafiti\AdminBundle\Admin\ProductAdmin
         arguments: [~, Dafiti\AdminBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Product }
+            - { name: sonata.admin, manager_type: orm, group: Products, label: Product }
+    dafiti_admin.product.service:
+        class: Dafiti\AdminBundle\Service\ProductService
+        arguments:
+            $em: "@doctrine.orm.entity_manager"

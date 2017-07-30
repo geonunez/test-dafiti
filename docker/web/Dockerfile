@@ -5,7 +5,7 @@ MAINTAINER Jorge Nuñez <jorge.nunez@opinapanel.com>
 ### OS Packages
 RUN apt-get update && \
     apt-get install -y git vim wget curl libcurl3-dev zlib1g-dev \
-        libmcrypt-dev libfreetype6-dev libjpeg62-turbo-dev
+        libmcrypt-dev libfreetype6-dev libjpeg62-turbo-dev mysql-client
 
 ### Composer
 RUN cd /root && \

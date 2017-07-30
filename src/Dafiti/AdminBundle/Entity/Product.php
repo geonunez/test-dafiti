@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
 * Product Entity
 *
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Dafiti\AdminBundle\Repository\ProductRepository")
 * @ORM\Table(name="product")
 * @ORM\HasLifecycleCallbacks()
 */
@@ -97,7 +97,13 @@ class Product
      */
     public function __toString()
     {
-        return $this->name;
+        $toString = "";
+
+        if (isset($this->name)) {
+            $toString = $this->name;
+        }
+
+        return $toString;
     }
 
     /**
@@ -239,7 +245,13 @@ class Product
                 Product::IMAGE_FOLDER,
                 $this->getImageFile()->getClientOriginalName()
             );
-            $this->image = $this->getImageFile()->getClientOriginalName();
+
+            $this->image = sprintf(
+                "/%s/%s",
+                Product::IMAGE_FOLDER,
+                $this->getImageFile()->getClientOriginalName()
+            );
+
             $this->setImageFile(null);
         }
     }

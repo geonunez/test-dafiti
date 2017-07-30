@@ -4,14 +4,26 @@ namespace Dafiti\WebBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+/**
+ * Default Controller.
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * Shows the lastest products.
+     *
+     * @Route("/", name="dafiti_web.default.index")
+     * @Template()
      */
     public function indexAction()
     {
-        return $this->render('DafitiWebBundle:Default:index.html.twig');
+        $productService = $this->get('dafiti_admin.product.service');
+        $products = $productService->getLastest();
+
+        return [
+            "products" => $products
+        ];
     }
 }

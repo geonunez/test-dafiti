@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}{% endblock %} - Test Dafiti</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/css/heroic-features.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('public/img/favicon.ico') }}" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url('dafiti_web.default.index') }}">Test Dafiti</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            {% block page %}{% endblock %}
+            <hr>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; Test Dafiti {{ "now"|date("Y") }}</p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('public/js/jquery.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

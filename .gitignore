@@ -19,3 +19,4 @@
 /docker/db/*
 !/web/uploaded/products/.gitkeep
 /web/uploaded/products/*
+.DS_Store

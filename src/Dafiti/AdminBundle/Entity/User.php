@@ -39,13 +39,29 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
+     * Adds ROLE SUPER ADMIN.
+     *
+     * @ORM\PrePersist
+     */
+    public function superAdmin()
+    {
+        $this->addRole('ROLE_SUPER_ADMIN');
+    }
+
+    /**
      * Gets entity representation as a string.
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->username;
+        $toString = "";
+
+        if (isset($this->username)) {
+            $toString = $this->username;
+        }
+
+        return $toString;
     }
 
     /**
